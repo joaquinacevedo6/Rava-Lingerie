@@ -430,7 +430,7 @@
                     <a href="https://www.instagram.com/rava.lingerie/" target="_blank" class="w-10 h-10 rounded-full border border-brand-700 flex items-center justify-center hover:bg-brand-700 hover:text-white transition-all text-brand-300">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
-                    <a id="footer-wa-link" href="https://wa.me/5493875665931" target="_blank" class="w-10 h-10 rounded-full border border-brand-700 flex items-center justify-center hover:bg-brand-700 hover:text-white transition-all text-brand-300">
+                    <a id="footer-wa-link" href="https://api.whatsapp.com/send/?phone=5493875665931" target="_blank" class="w-10 h-10 rounded-full border border-brand-700 flex items-center justify-center hover:bg-brand-700 hover:text-white transition-all text-brand-300">
                         <i class="fa-brands fa-whatsapp"></i>
                     </a>
                 </div>
@@ -1011,7 +1011,7 @@
 
         <!-- FLOATING WHATSAPP BUTTON -->
         <a 
-            href="https://wa.me/5493875665931?text=Hola%20Rava%20Lingerie!%20Visito%20su%20web%20y%20me%20gustaría%20hacerles%20una%20consulta." 
+            href="https://api.whatsapp.com/send/?phone=5493875665931&text=Hola%20Rava%20Lingerie!%20Visito%20su%20web%20y%20me%20gustaria%20hacerles%20una%20consulta." 
             target="_blank" 
             class="bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-transform duration-300 animate-float flex items-center justify-center relative group"
             style="box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.45);"
@@ -1932,7 +1932,7 @@
             const methodLabel = method === 'envio' ? 'Envio a Domicilio' : 'Retiro por Showroom (Avenida Reyes Católicos 1626)';
             const paymentLabel = payment === 'transferencia' ? 'Transferencia Bancaria / Mercado Pago' : 'Efectivo (en mano)';
 
-            // Mensaje de WhatsApp estructurado usando secuencias de escape de caracteres Unicode nativas para máxima compatibilidad
+            // Mensaje de WhatsApp estructurado usando secuencias de escape de caracteres Unicode nativas para evitar fallos de codificación por el acortador wa.me
             let whatsappMessage = `\u{1F459} *RESERVA RAVA LINGERIE* \u{1F459}\n`;
             whatsappMessage += `\u{1F517} ${window.location.origin}${window.location.pathname}\n\n`;
             whatsappMessage += `\u{1F464} *Cliente:* ${name}\n`;
@@ -1948,7 +1948,8 @@
             whatsappMessage += `\u{1F4B0} *TOTAL A ABONAR:* $${totalOrderVal.toLocaleString('es-AR')}`;
 
             const encodedText = encodeURIComponent(whatsappMessage);
-            const targetUrl = `https://wa.me/5493875665931?text=${encodedText}`;
+            // Uso directo de api.whatsapp.com para evitar la corrupción de UTF-8 que hace el desvío de wa.me
+            const targetUrl = `https://api.whatsapp.com/send/?phone=5493875665931&text=${encodedText}`;
 
             window.open(targetUrl, '_blank');
 
