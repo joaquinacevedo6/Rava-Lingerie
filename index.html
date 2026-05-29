@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -970,7 +971,7 @@
                 <div class="w-7 h-7 rounded-full bg-brand-200 flex items-center justify-center text-brand-600 flex-shrink-0 text-xs shadow-inner">
                     <i class="fa-solid fa-wand-magic-sparkles"></i>
                 </div>
-                <div class="bg-white px-4 py-3 rounded-2xl rounded-tl-none border border-brand-200 shadow-sm text-xs text-brand-800 leading-relaxed">
+                <div class="bg-white px-4 py-3 rounded-2xl border border-brand-200 text-xs max-w-[85%] leather-relaxed">
                     ¡Hola hermosa! ✨ Soy tu estilista de moda personal en Rava. Estoy aquí para ayudarte a calcular tu talle ideal, aconsejarte qué usar y mostrarte las prendas perfectas según tus gustos. 👙🖤 ¿Por dónde empezamos hoy?
                 </div>
             </div>
@@ -1130,9 +1131,7 @@
 
         /* ==================== CONFIGURACIÓN DE CLOUDINARY ==================== */
         const CLOUDINARY_CLOUD_NAME = "dni6oe3vi";
-        // NOTA: Se define "ml_default" como preset estándar no firmado. 
-        // Si tienes configurado otro preset diferente en tu cuenta de Cloudinary, cámbialo aquí.
-        const CLOUDINARY_UPLOAD_PRESET = "ml_default"; 
+        const CLOUDINARY_UPLOAD_PRESET = "unsigned_upload"; 
 
         /* ==================== FUNCIONES CORREGIDAS PARA LA NUBE ==================== */
 
@@ -1414,8 +1413,8 @@
             }
 
             cloudinary.openUploadWidget({
-                cloudName: CLOUDINARY_CLOUD_NAME,
-                uploadPreset: CLOUDINARY_UPLOAD_PRESET,
+                cloudName: "dni6oe3vi",
+                uploadPreset: "unsigned_upload",
                 sources: ['local', 'url', 'camera'],
                 resourceType: resourceType,
                 multiple: false,
