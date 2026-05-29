@@ -1219,7 +1219,7 @@
                 renderInstagramFeed();
                 
                 console.log("Datos guardados en la nube con éxito.");
-                showToast("Cambios sincronizados con la nube ✨");
+                showToast("Cambios sincronizados con la nube \u{2728}");
             } catch (err) {
                 console.error("Error al guardar en la nube:", err);
                 showToast("Error al guardar en la nube. Revisa tu configuración.");
@@ -1452,22 +1452,22 @@
             openCloudinaryWidget((url) => {
                 document.getElementById('edit-about-img-base64').value = url;
                 document.getElementById('edit-about-img-preview').src = url;
-                showToast("Imagen de 'Nosotras' cargada correctamente 📸");
+                showToast("Imagen de 'Nosotras' cargada correctamente \u{1F4F8}");
             });
         }
 
         function uploadVariantWithCloudinary() {
             openCloudinaryWidget((url) => {
                 document.getElementById('pf-new-color-base64').value = url;
-                document.getElementById('pf-new-color-filename').innerText = "Imagen cargada en Cloudinary ✨";
-                showToast("Variante de color cargada correctamente 🎨");
+                document.getElementById('pf-new-color-filename').innerText = "Imagen cargada en Cloudinary \u{2728}";
+                showToast("Variante de color cargada correctamente \u{1F3A8}");
             });
         }
 
         function uploadInstagramImageWithCloudinary(idx) {
             openCloudinaryWidget((url) => {
                 document.getElementById(`insta-base64-${idx}`).value = url;
-                showToast(`Foto de Instagram Post #${idx+1} cargada 📸`);
+                showToast(`Foto de Instagram Post #${idx+1} cargada \u{1F4F8}`);
             });
         }
 
@@ -1476,7 +1476,7 @@
             openCloudinaryWidget((url) => {
                 document.getElementById('edit-hero-base64').value = url;
                 document.getElementById('edit-hero-url').value = url;
-                showToast("Archivo multimedia de portada cargado ✨");
+                showToast("Archivo multimedia de portada cargado \u{2728}");
             }, mediaType === 'video' ? 'video' : 'image');
         }
 
@@ -1526,7 +1526,7 @@
 
             saveStoreData();
             closeEditHeroModal();
-            showToast("Portada configurada con éxito ✨");
+            showToast("Portada configurada con éxito \u{2728}");
         }
 
         /* ==================== ADMIN EDIT INSTAGRAM FEED ==================== */
@@ -1590,7 +1590,7 @@
 
             saveStoreData();
             closeEditInstagramModal();
-            showToast("Feed de Instagram actualizado ✨");
+            showToast("Feed de Instagram actualizado \u{2728}");
         }
 
         /* ==================== ADMIN EDIT ABOUT ==================== */
@@ -1619,7 +1619,7 @@
 
             saveStoreData();
             closeEditAboutModal();
-            showToast("Sección 'Nosotras' guardada con éxito ✨");
+            showToast("Sección 'Nosotras' guardada con éxito \u{2728}");
         }
 
         /* ==================== ADMIN EDIT SIZE GUIDE ==================== */
@@ -1647,7 +1647,7 @@
                 };
             });
             saveStoreData();
-            showToast("Guía de talles actualizada ✨");
+            showToast("Guía de talles actualizada \u{2728}");
         }
 
         /* ==================== ADMIN PRODUCT PANEL ==================== */
@@ -1751,7 +1751,7 @@
 
             closeProductEditForm();
             saveStoreData();
-            showToast("Producto guardado con éxito ✨");
+            showToast("Producto guardado con éxito \u{2728}");
         }
 
         function deleteProduct(id) {
@@ -1809,7 +1809,7 @@
             document.getElementById('qv-add-btn').onclick = () => {
                 const currentVariant = p.variants.find(v => v.color === selectedColor);
                 if (currentVariant && !currentVariant.hasStock) {
-                    showToast("No se puede agregar al carrito. Variante sin stock ❌");
+                    showToast("No se puede agregar al carrito. Variante sin stock \u{274C}");
                     return;
                 }
 
@@ -1821,7 +1821,7 @@
                 }
                 updateCartUI();
                 closeQuickView();
-                showToast("Agregado al carrito 🛍️");
+                showToast("Agregado al carrito \u{1F6CD}\u{FE0F}");
             };
 
             document.getElementById('quickview-modal').classList.remove('hidden');
@@ -1926,26 +1926,26 @@
                 const sub = item.product.price * item.quantity;
                 totalOrderVal += sub;
                 const optColor = item.color ? `, Color: ${item.color}` : '';
-                productListText += `• ${item.quantity}x ${item.product.title} (${item.size}${optColor})\n`;
+                productListText += `\u{2022} ${item.quantity}x ${item.product.title} (${item.size}${optColor})\n`;
             });
 
-            const methodLabel = method === 'envio' ? 'Envío a Domicilio' : 'Retiro por Showroom (Avenida Reyes Católicos 1626)';
+            const methodLabel = method === 'envio' ? 'Envio a Domicilio' : 'Retiro por Showroom (Avenida Reyes Católicos 1626)';
             const paymentLabel = payment === 'transferencia' ? 'Transferencia Bancaria / Mercado Pago' : 'Efectivo (en mano)';
 
-            // Mensaje de WhatsApp simplificado, estructurado y amigable
-            let whatsappMessage = `👙 *RESERVA RAVA LINGERIE* 👙\n`;
-            whatsappMessage += `🔗 ${window.location.origin}${window.location.pathname}\n\n`;
-            whatsappMessage += `👤 *Cliente:* ${name}\n`;
-            whatsappMessage += `🚚 *Entrega:* ${methodLabel}\n`;
+            // Mensaje de WhatsApp estructurado usando secuencias de escape de caracteres Unicode nativas para máxima compatibilidad
+            let whatsappMessage = `\u{1F459} *RESERVA RAVA LINGERIE* \u{1F459}\n`;
+            whatsappMessage += `\u{1F517} ${window.location.origin}${window.location.pathname}\n\n`;
+            whatsappMessage += `\u{1F464} *Cliente:* ${name}\n`;
+            whatsappMessage += `\u{1F69A} *Entrega:* ${methodLabel}\n`;
             if (method === 'envio') {
-                whatsappMessage += `📍 *Dirección:* ${address}\n`;
+                whatsappMessage += `\u{1F4CD} *Dirección:* ${address}\n`;
             }
-            whatsappMessage += `💳 *Pago:* ${paymentLabel}\n`;
+            whatsappMessage += `\u{1F4B3} *Pago:* ${paymentLabel}\n`;
             if (notes.trim() !== '') {
-                whatsappMessage += `📝 *Aclaraciones:* ${notes}\n`;
+                whatsappMessage += `\u{1F4DD} *Aclaraciones:* ${notes}\n`;
             }
-            whatsappMessage += `\n🛍️ *Prendas reservadas:*\n${productListText}`;
-            whatsappMessage += `💰 *TOTAL A ABONAR:* $${totalOrderVal.toLocaleString('es-AR')}`;
+            whatsappMessage += `\n\u{1F6CD}\u{FE0F} *Prendas reservadas:*\n${productListText}`;
+            whatsappMessage += `\u{1F4B0} *TOTAL A ABONAR:* $${totalOrderVal.toLocaleString('es-AR')}`;
 
             const encodedText = encodeURIComponent(whatsappMessage);
             const targetUrl = `https://wa.me/5493875665931?text=${encodedText}`;
@@ -1967,7 +1967,7 @@
                 document.getElementById('owner-add-product-container').classList.remove('hidden');
                 
                 closeAdminLogin();
-                showToast("Modo Edición Activado ✨");
+                showToast("Modo Edición Activado \u{2728}");
                 
                 renderCatalog();
                 renderAboutSection();
@@ -1994,9 +1994,9 @@
             hist.innerHTML += `<div class="bg-brand-dark text-white p-3 rounded-2xl text-xs text-right self-end ml-auto max-w-[85%]">${q}</div>`;
 
             setTimeout(() => {
-                let ans = "¡Hola hermosa! ✨ Para decirte tu talle exacto en Rava, indícame tu contorno de **busto** y **cadera** en centímetros. Nuestro talle **S (85)** va para 80-85cm; el **M (90)** para 86-90cm; el **L (95)** para 91-95cm; y el **XL (100)** para 96-101cm. ¿Cuáles son tus medidas?";
+                let ans = "¡Hola hermosa! \u{2728} Para decirte tu talle exacto en Rava, indícame tu contorno de **busto** y **cadera** en centímetros. Nuestro talle **S (85)** va para 80-85cm; el **M (90)** para 86-90cm; el **L (95)** para 91-95cm; y el **XL (100)** para 96-101cm. ¿Cuáles son tus medidas?";
                 if (q.includes('85') || q.includes('90') || q.includes('95')) {
-                    ans = "¡Perfecto! Te recomiendo llevar un talle **M (90)** para que te calce de manera cómoda y resalte tu figura de forma súper sensual. 🖤";
+                    ans = "¡Perfecto! Te recomiendo llevar un talle **M (90)** para que te calce de manera cómoda y resalte tu figura de forma súper sensual. \u{1F5A4}";
                 }
                 hist.innerHTML += `<div class="bg-white px-4 py-3 rounded-2xl border border-brand-200 text-xs max-w-[85%]">${ans}</div>`;
                 hist.scrollTop = hist.scrollHeight;
@@ -2028,7 +2028,7 @@
             setTimeout(() => {
                 hist.innerHTML += `
                     <div class="bg-white px-4 py-3 rounded-2xl border border-brand-200 text-xs max-w-[85%]">
-                        ¡Hola hermosa! ✨ Según tus medidas de busto (${bustVal}cm) y cadera (${hipVal}cm), y tu preferencia de calce **${fitVal}**, tu talle ideal de Rava es el **${matchedSize}**. ¡Te va a calzar espectacular! 👙🖤
+                        ¡Hola hermosa! \u{2728} Según tus medidas de busto (${bustVal}cm) y cadera (${hipVal}cm), y tu preferencia de calce **${fitVal}**, tu talle ideal de Rava es el **${matchedSize}**. ¡Te va a calzar espectacular! \u{1F459}\u{1F5A4}
                     </div>
                 `;
                 hist.scrollTop = hist.scrollHeight;
